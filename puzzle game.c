@@ -1,0 +1,57 @@
+#include<stdio.h>
+void main()
+{
+   int i,j,p,k,step,tmp,flag=1,t;
+   int a[9];
+   const int a2[9]={1,2,3,4,5,6,7,8,9};
+ scanf("%d",&t);
+   while(t--)
+{
+   for(i=0;i<9;i++)
+   {
+      scanf("%d",&a[i]);
+   }
+   for(i=0;i<9;i++)
+   {
+        if(i%3==0)
+          printf("\n");
+       printf("%2d",a[i]);
+   }
+   for(i=0;i<9;i++)
+   {
+        if(a[i]!=a2[i])
+        {k=a[i]-1;
+           tmp=a[i]+a[k];
+           for(j=2;j<tmp;j++)
+           {
+                if(tmp%j==0)
+                {
+                   flag=0;
+                   break;
+                }
+                else
+                  flag=1;
+           }
+        if(flag==1)
+        {
+          p=a[i];
+          a[i]=a[k];
+          a[k]=p;
+          step++;
+        }
+        }
+   }
+for(i=0;i<9;i++)
+        {
+            if(a[i]!=a2[i])
+            {
+                  flag=2;
+                  break;
+            }
+        }
+        if(flag==2)
+            printf("-1");
+        else
+            printf("%d",step);
+}
+}
